@@ -204,5 +204,38 @@
   }
   setInterval(createPetal, 600);
 </script>
+
+<!-- Hidden YouTube music player -->
+<iframe id="yt-player" 
+  src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&loop=1&playlist=2Vv-BfVoq4g&controls=0&mute=0" 
+  style="position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;z-index:-1;"
+  allow="autoplay"
+  frameborder="0">
+</iframe>
+
+<!-- Music toggle button -->
+<button id="music-btn" onclick="toggleMusic()" style="
+  position:fixed;top:1.2rem;right:1.5rem;z-index:200;
+  background:rgba(255,255,255,0.15);
+  border:1px solid rgba(201,79,109,0.4);
+  border-radius:50%;width:40px;height:40px;
+  font-size:1.1rem;cursor:pointer;
+  backdrop-filter:blur(5px);
+  transition:all 0.3s;
+  display:flex;align-items:center;justify-content:center;
+">🎵</button>
+
+<script>
+  let muted = false;
+  function toggleMusic() {
+    const iframe = document.getElementById('yt-player');
+    const btn = document.getElementById('music-btn');
+    muted = !muted;
+    iframe.src = muted 
+      ? "https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&loop=1&playlist=2Vv-BfVoq4g&controls=0&mute=1"
+      : "https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&loop=1&playlist=2Vv-BfVoq4g&controls=0&mute=0";
+    btn.textContent = muted ? '🔇' : '🎵';
+  }
+</script>
 </body>
 </html>
